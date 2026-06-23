@@ -55,7 +55,7 @@ const ProgramItem = ({ time, title, address }) => {
 
         <motion.a
           {...anim}
-          href={`https://www.google.com/maps/search/${address}`}
+          href={address}
           target="_blank"
           className="inline-flex items-center gap-2"
         >
