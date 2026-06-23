@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Նվեր և Գոհարի հարսանեկան հրավիրատոմս",
     description: "Best invitation website",
-    url: "https://wedding-invitation-1-ecru.vercel.app/",
+    url: "https://nver-gohar.netlify.app",
     siteName: "Նվեր և Գոհար",
     images: [
       {
-        url: "/first.jpg",
+        url: "https://nver-gohar.netlify.app/first.jpg",
         width: 1200,
         height: 630,
       },
