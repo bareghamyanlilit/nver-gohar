@@ -1,7 +1,8 @@
 "use client";
 
-import { rsvp } from "@/data/data";
+import { anim, rsvp } from "@/data/data";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 type FamilySide = "Հարսի կողմից" | "Փեսայի կողմից" | null;
 type Attending = "Այո" | "Ոչ" | null;
@@ -151,13 +152,17 @@ export default function AttendanceGuests() {
   };
 
   return (
-    <div className="FontMassis mx-auto w-full max-w-3xl p-6">
-      <h1 className="text-2xl font-bold text-vrayi text-center mb-6">
+    <div className="mx-auto w-full max-w-3xl p-6 mt-20">
+      <motion.h1
+        {...anim}
+        className="text-3xl font-bold text-vrayi text-center mb-20 tracking-widest"
+      >
         Հրավերի պատասխան
-      </h1>
+      </motion.h1>
 
       {message.text && (
-        <div
+        <motion.div
+          {...anim}
           className={`p-4 mb-4 rounded-lg ${
             message.type === "success"
               ? "bg-green-100 text-green-700"
@@ -165,103 +170,126 @@ export default function AttendanceGuests() {
           }`}
         >
           {message.text}
-        </div>
+        </motion.div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="text-xl space-y-8">
         {/* Full Name */}
-        <input
-          type="text"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleInputChange}
-          placeholder="Անուն Ազգանուն"
-          className="w-full p-3 border rounded-lg"
-        />
-
-        {/* Family Side */}
-        <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={() => handleFamilySideChange("Հարսի կողմից")}
-            className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
-              formData.familySide === "Հարսի կողմից"
-                ? "bg-[#2D2D2D] text-white border-[#2D2D2D]"
-                : "bg-white text-black border-gray-300"
-            }`}
-          >
-            Հարսի կողմից
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleFamilySideChange("Փեսայի կողմից")}
-            className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
-              formData.familySide === "Փեսայի կողմից"
-                ? "bg-[#2D2D2D] text-white border-[#2D2D2D]"
-                : "bg-white text-black border-gray-300"
-            }`}
-          >
-            Փեսայի կողմից
-          </button>
+        <div>
+          <p className="text-start mb-4 ">Խնդրում ենք գրել Ձեր անուն, ազգանունը</p>
+          <motion.input
+            {...anim}
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleInputChange}
+            placeholder="Անուն Ազգանուն"
+            className="w-full p-3 border-b rounded-lg"
+          />
         </div>
+        <div>
+          <p className="text-start  mb-4">
+            Խնդրում ենք նշել թե ում կողմից եք հրավիրված
+          </p>
+          {/* Family Side */}
+          <motion.div {...anim} className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => handleFamilySideChange("Հարսի կողմից")}
+              className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
+                formData.familySide === "Հարսի կողմից"
+                  ? "bg-guyn text-[#FFFDFB] border-guyn"
+                  : " text-black "
+              }`}
+            >
+              Հարսի
+            </button>
 
-        {/* Attending */}
-        <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={() => handleAttendingChange("Այո")}
-            className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
-              formData.attending === "Այո"
-                ? "bg-[#2D2D2D] text-white border-[#2D2D2D]"
-                : "bg-white text-black border-gray-300"
-            }`}
-          >
-            Այո
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleAttendingChange("Ոչ")}
-            className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
-              formData.attending === "Ոչ"
-                ? "bg-[#2D2D2D] text-white border-[#2D2D2D]"
-                : "bg-white text-black border-gray-300"
-            }`}
-          >
-            Ոչ
-          </button>
+            <button
+              type="button"
+              onClick={() => handleFamilySideChange("Փեսայի կողմից")}
+              className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
+                formData.familySide === "Փեսայի կողմից"
+                  ? "bg-guyn text-[#FFFDFB] border-guyn"
+                  : " text-black "
+              }`}
+            >
+              Փեսայի
+            </button>
+          </motion.div>
         </div>
+        <div>
+          <p className="text-start  mb-4">Խնդրում ենք նշել գալու եք, թե՞ ոչ</p>
+          {/* Attending */}
+          <motion.div {...anim} className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => handleAttendingChange("Այո")}
+              className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
+                formData.attending === "Այո"
+                  ? "bg-guyn text-[#FFFDFB] border-guyn"
+                  : " text-black "
+              }`}
+            >
+              Այո
+            </button>
 
+            <button
+              type="button"
+              onClick={() => handleAttendingChange("Ոչ")}
+              className={`flex-1 p-3 rounded-lg border transition-all duration-200 ${
+                formData.attending === "Ոչ"
+                  ? "bg-guyn text-[#FFFDFB] border-guyn"
+                  : " text-black "
+              }`}
+            >
+              Ոչ
+            </button>
+          </motion.div>
+        </div>
         {/* Guest Count */}
         {formData.attending === "Այո" && (
-          <input
-            type="number"
-            name="guestCount"
-            value={formData.guestCount}
-            onChange={handleInputChange}
-            className="w-full p-3 border rounded-lg"
-            min={0}
-          />
+          <div>
+            <p className="text-start  mb-4">Քանի հոգով եք գալու</p>
+
+            <motion.input
+              {...anim}
+              type="number"
+              name="guestCount"
+              value={formData.guestCount}
+              onChange={handleInputChange}
+              className="w-full p-3 border-b rounded-lg"
+              placeholder="Քանակ"
+              min={0}
+            />
+          </div>
         )}
 
-        {/* Comment */}
-        <textarea
-          name="comment"
-          value={formData.comment}
-          onChange={handleInputChange}
-          className="w-full p-3 border rounded-lg"
-          placeholder="Մեկնաբանություն"
-        />
+        <div>
+          <p className="text-start  mb-3">
+            Ցանկության դեպքում կարող եք թողնել մեկնաբանություն
+          </p>
+
+          {/* Comment */}
+          <motion.textarea
+            {...anim}
+            name="comment"
+            value={formData.comment}
+            onChange={handleInputChange}
+            className="w-full p-3 border rounded-lg"
+            placeholder="Մեկնաբանություն"
+          />
+        </div>
 
         {/* Submit */}
-        <button
+        <motion.button
+          {...anim}
           type="submit"
           disabled={isSubmitting}
-          className="w-full p-3 bg-[#2D2D2D] text-white rounded-lg"
+          className="w-full p-3 bg-guyn text-[#FFFDFB] rounded-lg"
         >
           {isSubmitting ? "Ուղարկվում է..." : "Ուղարկել"}
-        </button>
+        </motion.button>
       </form>
     </div>
   );

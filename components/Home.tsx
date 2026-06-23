@@ -16,7 +16,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className=" bg-[#fafafa] max-w-xl overflow-hidden m-auto">
+    <div className=" bg-[#fafafa] FontMassis max-w-xl overflow-hidden m-auto">
       {/* open */}
       <div
         className={`bg-no-repeat  max-w-xl justify-self-center bg-center bg-cover text-xl fixed z-100 w-full h-full flex flex-col gap-10 justify-center items-center text-white transition ${open ? "hidden -z-10" : ""}`}
