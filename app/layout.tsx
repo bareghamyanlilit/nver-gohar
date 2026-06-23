@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Նվեր և Գոհար",
   description: "Նվեր և Գոհար",
   openGraph: {
-    title: "Նվեր և Գոհարի հարսանեկան հրավիրատոմս",
+    title: "Նվերի և Գոհարի հարսանեկան հրավիրատոմս",
     description: "Best invitation website",
     url: "https://nver-gohar.netlify.app",
     siteName: "Նվեր և Գոհար",
